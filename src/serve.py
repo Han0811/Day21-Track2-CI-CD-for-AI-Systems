@@ -1,40 +1,22 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from google.cloud import storage
 import joblib
 import os
 
 app = FastAPI()
 
-GCS_BUCKET = os.environ["GCS_BUCKET"]
-GCS_MODEL_KEY = "models/latest/model.pkl"
-MODEL_PATH = os.path.expanduser("~/models/model.pkl")
+MODEL_PATH = "models/model.pkl"
+model = None
 
+def load_model():
+    global model
+    if os.path.exists(MODEL_PATH):
+        model = joblib.load(MODEL_PATH)
+        print(f"Model loaded successfully from {MODEL_PATH}")
+    else:
+        print(f"WARNING: Model file not found at {MODEL_PATH}. Prediction will fail.")
 
-def download_model():
-    """
-    Tai file model.pkl tu GCS ve may khi server khoi dong.
-
-    Ham nay duoc goi mot lan khi module duoc import. Su dung
-    GOOGLE_APPLICATION_CREDENTIALS de xac thuc (duoc dat trong systemd service).
-    """
-    # TODO 1: Tao storage.Client()
-    client = storage.Client()
-
-    # TODO 2: Lay bucket va blob tuong ung
-    bucket = client.bucket(GCS_BUCKET)
-    blob   = bucket.blob(GCS_MODEL_KEY)
-
-    # TODO 3: Tai file model xuong may
-    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
-    blob.download_to_filename(MODEL_PATH)
-
-    # TODO 4: In thong bao thanh cong
-    print(f"Model da duoc tai xuong tu GCS: {GCS_MODEL_KEY} -> {MODEL_PATH}")
-
-
-download_model()
-model = joblib.load(MODEL_PATH)
+load_model()
 
 
 class PredictRequest(BaseModel):
