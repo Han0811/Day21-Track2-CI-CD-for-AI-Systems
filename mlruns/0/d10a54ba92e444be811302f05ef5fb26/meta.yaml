@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/VinAction/Day21-Track2-CI-CD-for-AI-Systems/mlruns/0/d10a54ba92e444be811302f05ef5fb26/artifacts
+end_time: 1778163015040
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d10a54ba92e444be811302f05ef5fb26
+run_name: handsome-kite-608
+run_uuid: d10a54ba92e444be811302f05ef5fb26
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778163005005
+status: 3
+tags: []
+user_id: H2A

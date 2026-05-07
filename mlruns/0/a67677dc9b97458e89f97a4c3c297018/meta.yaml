@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/VinAction/Day21-Track2-CI-CD-for-AI-Systems/mlruns/0/a67677dc9b97458e89f97a4c3c297018/artifacts
+end_time: 1778163100227
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a67677dc9b97458e89f97a4c3c297018
+run_name: honorable-bug-966
+run_uuid: a67677dc9b97458e89f97a4c3c297018
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778163083503
+status: 3
+tags: []
+user_id: H2A
